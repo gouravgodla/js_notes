@@ -19,9 +19,11 @@ let students = 30;
 // students %= 2;
 
 // increment operators
-students++;
+// students++;
 // decrement operators
-students--;
+// students--;
+
+
 /*
 operator precedence
 1. parenthesis()
@@ -29,7 +31,9 @@ operator precedence
 3. multiplication & division & modulo
 4. addition & subtraction 
 */
-let result = 1 + 2 / 4 - 3 * 4(5 + 2)
+// let result = 1 + 2 / 4 - 3 * 4(5 + 2)
+
+
 console.log(students)
 console.log(extrastudents)
 console.log(result)
