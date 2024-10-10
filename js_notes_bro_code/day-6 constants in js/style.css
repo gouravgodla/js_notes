@@ -1,0 +1,10 @@
+body {
+  font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  background-color: rgb(134, 237, 237);
+}
+.hero {
+  display: grid;
+  justify-content: center;
+}
