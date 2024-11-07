@@ -7,10 +7,33 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <input type="checkbox" id="myCheckBox" />
-    <label for="myCheckBox">Subscribe</label><br /><br />
+    <dev id="container">
+      <input type="checkbox" id="myCheckBox" />
+      <label for="myCheckBox">Subscribe</label><br /><br />
 
-    <input type="radio" id="visaBtn" name="card" />
+      <dev id="container">
+        <input type="radio" id="visaBtn" name="card" />
+        <label for="visaBts">Visa</label><br />
+      </dev>
+
+      <dev id="container">
+        <input type="radio" id="masterCardBtn" name="card" />
+        <label for="masterCardBtn">MasterCard</label> <br />
+      </dev>
+
+      <dev id="container">
+        <input type="radio" id="payPalBtn" name="card" />
+        <label for="payPalBtn">MasterCard</label> <br />
+      </dev>
+
+      <dev id="container">
+        <button type="submit" id="mySubmit">submit</button>
+      </dev>
+
+      <p id="subResult"></p>
+
+      <p id="paymentResult"></p>
+    </dev>
     <script src="./index.js"></script>
   </body>
 </html>
