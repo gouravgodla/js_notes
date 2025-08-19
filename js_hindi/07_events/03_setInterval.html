@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval and clearInterval in JS</title>
+  </head>
+  <body>
+    <h1>chai aur code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // Declare a variable to hold the interval ID
+    let intervalId = null;
+
+    // The function to be executed repeatedly
+    const sayDate = function (str) {
+      console.log(str, Date.now());
+    };
+
+    // Event listener for the "Start" button
+    document.querySelector("#start").addEventListener("click", function () {
+      // Check if an interval is not already running to prevent multiple intervals
+      if (!intervalId) {
+        intervalId = setInterval(sayDate, 1000, "HI");
+        console.log("Interval started!");
+      }
+    });
+
+    // Event listener for the "Stop" button
+    document.querySelector("#stop").addEventListener("click", function () {
+      clearInterval(intervalId);
+      // Set intervalId back to null so it can be started again
+      intervalId = null;
+      console.log("Interval stopped!");
+    });
+  </script>
+</html>

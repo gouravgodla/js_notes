@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react</title>
+  </head>
+  <body>
+    <button>Buttton Click</button>
+  </body>
+  <script>
+    // A class to manage our application's logic.
+    class React {
+      // The constructor runs immediately when we create a new instance with 'new React()'.
+      constructor() {
+        // 'this' here refers to the new object being created.
+        this.library = "React";
+        this.server = "https://localhost:300";
+
+        // --- REQUIREMENT ---
+        // 1. Find the button element in the DOM.
+        document
+          .querySelector("button")
+          // 2. Add a 'click' event listener to it.
+          // 3. Set the callback function for the click event.
+          // We use .bind(this) to ensure that when handleClick is called,
+          // 'this' inside of it still refers to our class instance ('app').
+          .addEventListener("click", this.handleClick.bind(this));
+      }
+
+      // This is the method that will execute when the button is clicked.
+      handleClick() {
+        console.log("button click");
+        // Because we used .bind(), 'this' correctly refers to the class instance,
+        // so 'this.server' is accessible and has the correct value.
+        // Without .bind(), 'this' would be the <button> element, and this line would log 'undefined'.
+        console.log(this.server);
+      }
+    }
+
+    // Create a new instance of the React class.
+    // This calls the constructor, which sets up the properties and the event listener.
+    const app = new React();
+  </script>
+</html>

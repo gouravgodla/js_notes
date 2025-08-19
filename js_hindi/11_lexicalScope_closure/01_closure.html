@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure aur chai</title>
+  </head>
+  <body style="background-color: #313131">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+
+  <script>
+    // CONCEPT 1: LEXICAL SCOPE
+    // Lexical scope means an inner function has access to the variables of its outer (parent)
+    // function. The scope is defined by the position of the functions in the code.
+    // function init() {
+    //      let name = "Mozilla"; // Variable in the parent scope
+    //      function displayName() {
+    //           // This inner function can access 'name' from its parent.
+    //           console.log(name);
+    //      }
+    //      displayName();
+    // }
+    // init();
+
+    // The scope chain is a one-way street: an outer scope cannot access variables from an inner scope.
+    // function outer(){
+    //      let username = "hitesh"
+    //      // This would fail because 'secret' is in a child scope.
+    //      console.log("OUTER", secret);
+    //      function inner(){
+    //           let secret = "my123"
+    //           // 'inner' can access 'username' from the parent 'outer'.
+    //           console.log("inner", username);
+    //      }
+    //      function innerTwo(){
+    //           console.log("innerTwo", username);
+    //           // This would fail because 'secret' is in a sibling scope, not its own or a parent's.
+    //           console.log(secret);
+    //      }
+    //      inner()
+    //      innerTwo()
+
+    // }
+    // outer()
+    // This would fail because 'username' is not in the global scope.
+    // console.log("TOO OUTER", username);
+
+    // CONCEPT 2: CLOSURE
+    // A closure is when a function "remembers" its original lexical scope, even
+    // after that scope has finished executing.
+    // function makeFunc() {
+    //      const name = "Mozilla";
+    //      function displayName() {
+    //           // This function "closes over" the 'name' variable.
+    //           console.log(name);
+    //      }
+    //      // We return the function itself, not the result of calling it.
+    //      return displayName;
+    // }
+
+    // // makeFunc() runs and finishes, but the returned function (now myFunc)
+    // // still holds a reference to the 'name' variable.
+    // const myFunc = makeFunc();
+    // // When we call myFunc() here, it can still access 'name'.
+    // myFunc();
+  </script>
+  <script>
+    // This is a repetitive way to solve the problem.
+    // It requires writing a separate, nearly identical function for each button.
+    // document.getElementById("orange").onclick = function(){
+    //      document.body.style.backgroundColor = `orange`
+    // }
+    // document.getElementById("green").onclick = function(){
+    //      document.body.style.backgroundColor = `green`
+    // }
+
+    // PRACTICAL CLOSURE: A scalable and elegant solution.
+    // This 'clickHandler' function is a factory—it produces other functions.
+    function clickHandler(color) {
+      // The 'color' variable exists within this function's scope.
+
+      // This inner function is what gets returned. It creates a closure,
+      // "remembering" the 'color' variable that was passed to its parent.
+      // It holds onto this 'color' value even after clickHandler has finished running.
+      return function () {
+        document.body.style.backgroundColor = `${color}`;
+      };
+    }
+
+    // --- HOW IT WORKS ---
+    // 1. `clickHandler("orange")` is called IMMEDIATELY.
+    // 2. It returns a new function that has "orange" locked into its memory (its closure).
+    // 3. This new function is assigned as the event handler for the orange button's click event.
+    document.getElementById("orange").onclick = clickHandler("orange");
+
+    // The same process happens here, creating a COMPLETELY SEPARATE function
+    // that has "green" locked into its own memory.
+    document.getElementById("green").onclick = clickHandler("green");
+  </script>
+</html>
